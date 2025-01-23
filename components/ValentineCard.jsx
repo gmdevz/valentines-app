@@ -13,6 +13,10 @@ const ValentineCard = () => {
 
   const [qrCode, setQrCode] = useState(null);
 
+  const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+    : "http://localhost:3000";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -25,9 +29,10 @@ const ValentineCard = () => {
       });
 
       const data = await response.json();
-      setShareLink(data.shareLink);
+      const fullShareLink = `${BASE_URL}${data.shareLink}`;
+      setShareLink(fullShareLink);
       setSubmitted(true);
-      setQrCode(data.shareLink); // Set the QR code URL
+      setQrCode(fullShareLink);
     } catch (error) {
       console.error("Failed to submit valentine:", error);
       alert("Failed to create valentine. Please try again.");
