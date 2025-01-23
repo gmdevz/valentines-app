@@ -13,9 +13,9 @@ const ValentineCard = () => {
 
   const [qrCode, setQrCode] = useState(null);
 
-  const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    : "http://localhost:3000";
+  const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL;
+  // ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  // : "http://localhost:3000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
